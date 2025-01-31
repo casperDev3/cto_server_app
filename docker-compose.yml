@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: django_app
+    command: python manage.py runserver 0.0.0.0:8045
+    volumes:
+      - .:/app
+    ports:
+      - "8045:8045"
+    environment:
+      - DEBUG=True  # Set to False in production
