@@ -10,6 +10,7 @@ class Post(models.Model):
     reactions = models.IntegerField(default=0)
     comments = models.IntegerField(default=0)
     comments_list = models.TextField(default="[]")
+    category = models.TextField(default="Основні")
     tags = models.TextField(default="[]")
 
 

@@ -14,3 +14,18 @@ def all_posts(request):
         post = Post.objects.create(title=data['title'], content=data['content'])
         return JsonResponse({"data": post.__str__()})
 
+@require_http_methods(["GET", "DELETE", "PUT"])
+def post_detail(request, pk):
+    post = Post.objects.get(pk=pk)
+    if request.method == "GET":
+        return JsonResponse({"data": post.__str__()})
+    elif request.method == "DELETE":
+        post.delete()
+        return JsonResponse({"data": "Post deleted"})
+    elif request.method == "PUT":
+        data = json.loads(request.body)['data']
+        post.title = data['title']
+        post.content = data['content']
+        post.save()
+        return JsonResponse({"data": post.__str__()})
+
