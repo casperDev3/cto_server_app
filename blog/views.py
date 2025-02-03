@@ -21,7 +21,7 @@ def post_detail(request, pk):
         return JsonResponse({"data": post.__str__()})
     elif request.method == "DELETE":
         post.delete()
-        return JsonResponse({"data": "Post deleted"})
+        return JsonResponse({"data": True})
     elif request.method == "PUT":
         data = json.loads(request.body)['data']
         post.title = data['title']
