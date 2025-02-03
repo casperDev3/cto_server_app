@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
-    'corsheaders'
+    'corsheaders',
+    'reviews'
 ]
 
 MIDDLEWARE = [
@@ -57,6 +58,7 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 ROOT_URLCONF = 'cto_server_app.urls'
+
 
 TEMPLATES = [
     {
