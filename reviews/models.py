@@ -8,4 +8,4 @@ class Review(models.Model):
 
     def __str__(self):
         return f"{self.author} ({self.rating}★)"
-    # 234
+    # 2342
