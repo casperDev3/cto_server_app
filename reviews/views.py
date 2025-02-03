@@ -1,6 +1,6 @@
 from django.views.decorators.http import require_http_methods
 import json
-from reviews.helpers import Helpers
+from .utils.helpers import Helpers
 from .models import Review
 
 @require_http_methods(["GET", "POST"])
