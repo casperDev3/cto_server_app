@@ -8,5 +8,5 @@ class Review(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.author} ({self.rating}★)"
+        return f"{self.author} ({self.rating}★) {self.text} {self.created_at} "
     # 2342
