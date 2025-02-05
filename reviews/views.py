@@ -39,3 +39,4 @@ def all_reviews(request):
                                                  status=400)
     except Exception as e:
         return Helpers.internal_server_error(str(e))
+    #0602
