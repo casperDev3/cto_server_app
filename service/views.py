@@ -1,7 +1,7 @@
 from django.core.exceptions import ValidationError
 from django.views.decorators.http import require_http_methods
 from .models import Service
-from decimal import Decimal
+from decimal import Decimal, InvalidOperation
 from django.db.models import Q
 from .utils.helpers import validate_service_data, parse_request_data
 from .utils.response_helpers import success_response, error_response
@@ -20,18 +20,16 @@ def all_services(request):
             if price_min:
                 try:
                     filters &= Q(price__gte=Decimal(price_min))
-                except ValueError:
+                except (ValueError, InvalidOperation):
                     return error_response("Invalid price_min value")
             if price_max:
                 try:
                     filters &= Q(price__lte=Decimal(price_max))
-                except ValueError:
+                except (ValueError, InvalidOperation):
                     return error_response("Invalid price_max value")
             if category:
-                try:
-                    filters &= Q(category__icontains=category)
-                except ValueError:
-                    return error_response("Invalid category")
+                filters &= Q(category__icontains=category)
+
 
             services = services.filter(filters)
 
