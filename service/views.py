@@ -2,6 +2,7 @@ from django.core.exceptions import ValidationError
 from django.views.decorators.http import require_http_methods
 from .models import Service
 from decimal import Decimal
+from django.db.models import Q
 from .utils.helpers import validate_service_data, parse_request_data
 from .utils.response_helpers import success_response, error_response
 
@@ -9,8 +10,33 @@ from .utils.response_helpers import success_response, error_response
 def all_services(request):
     try:
         if request.method == "GET":
-            services = list(Service.objects.all().values())
-            return success_response(services) if services else error_response("No services found")
+            services = Service.objects.all().values()
+
+            price_min = request.GET.get("price_min")
+            price_max = request.GET.get("price_max")
+            category = request.GET.get("category")
+
+            filters = Q()
+            if price_min:
+                try:
+                    filters &= Q(price__gte=Decimal(price_min))
+                except ValueError:
+                    return error_response("Invalid price_min value")
+            if price_max:
+                try:
+                    filters &= Q(price__lte=Decimal(price_max))
+                except ValueError:
+                    return error_response("Invalid price_max value")
+            if category:
+                try:
+                    filters &= Q(category__icontains=category)
+                except ValueError:
+                    return error_response("Invalid category")
+
+            services = services.filter(filters)
+
+            return success_response(list(services.values())) if services.exists() else error_response("No services found")
+
         elif request.method == "POST":
             data = parse_request_data(request)
             if not data:
