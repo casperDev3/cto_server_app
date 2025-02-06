@@ -28,6 +28,37 @@ class Helpers:
             "success": True,
         }, status=status)
 
+
+    @staticmethod
+    def success_updated(data, status=200):
+        return JsonResponse({
+            "id": data.id, "data": {
+
+                "author": data.author,
+                "rating": data.rating,
+                "text": data.text,
+                "created_at": data.created_at.isoformat(),
+                "updated_at": data.updated_at.isoformat()
+            },
+            "meta": {
+                "api_version": "1.0"
+            },
+
+            "success": True,
+        }, status=status)
+
+
+    @staticmethod
+    def success_deleted(data, status=200):
+        return JsonResponse({
+            "data": None,
+            "meta": {
+                "message" : "Successfully deleted",
+            },
+            "success": True,
+        },status=status)
+
+
     @staticmethod
     def internal_server_error(error, status=500):
         return JsonResponse({

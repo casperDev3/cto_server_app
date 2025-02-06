@@ -1,6 +1,9 @@
 from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_http_methods
 import json
+
+from .serializer import ReviewSerializer
 from .utils.helpers import Helpers
 from .models import Review
 from .utils.sorting import Sorting
@@ -40,3 +43,28 @@ def all_reviews(request):
     except Exception as e:
         return Helpers.internal_server_error(str(e))
     #0602
+
+    @require_http_methods(["PUT", "DELETE"])
+    def reviews_detail(request, pk):
+        reviews = get_object_or_404(Review, pk=pk)
+        try:
+            if request.method == "PUT":
+
+                try:
+                    data = json.loads(request.body)  # Для raw JSON
+                except json.JSONDecodeError:
+                    return Helpers.internal_server_error("Некорректный JSON")
+
+                    # Проверяем и обновляем через сериализатор
+                serializer = ReviewSerializer(reviews, data=data, partial=True)
+                if serializer.is_valid():
+                    serializer.save()
+                return Helpers.success_updated(reviews)
+
+
+            elif request.method == "DELETE":
+                reviews = get_object_or_404(Review, pk=pk)
+                reviews.delete()
+                return Helpers.success_deleted(reviews)
+        except Exception as e:
+            return JsonResponse({"data": None, "meta": {}}, status=500)

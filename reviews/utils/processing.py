@@ -58,6 +58,7 @@ class Processing:
             elif isinstance(item[field], float):
                 value = float(value)
 
+
             if operation == "$in":
                 if value in item[field]:
                     return True
