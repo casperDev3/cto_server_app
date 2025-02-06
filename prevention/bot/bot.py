@@ -7,7 +7,6 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from dotenv import load_dotenv
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-# Завантажуємо змінні середовища з файлу .env
 load_dotenv()
 
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
@@ -70,7 +69,7 @@ async def reply_to_user(message: types.Message):
 # Кнопка для адміністратора для відправки рекомендації всім
 @dp.message(Command("send_recommendation"))
 async def send_recommendation(message: types.Message):
-    if message.from_user.id == int(ADMIN_CHAT_ID):  # Перевірка, чи це адмін
+    if message.from_user.id == int(ADMIN_CHAT_ID): 
         keyboard = InlineKeyboardMarkup()
         button = InlineKeyboardButton(text="Надіслати рекомендацію", callback_data="send_reminder_to_all")
         keyboard.add(button)
@@ -79,7 +78,7 @@ async def send_recommendation(message: types.Message):
 
 @dp.callback_query(F.data == "send_reminder_to_all")
 async def send_recommendation_to_all(call: types.CallbackQuery):
-    if call.from_user.id == int(ADMIN_CHAT_ID):  # Перевірка, чи це адмін
+    if call.from_user.id == int(ADMIN_CHAT_ID): 
         for user_id in reminder_users:
             try:
                 await bot.send_message(user_id, "🔔 Не забувайте про профілактику на СТО! Вчасне обслуговування — запорука довговічності вашого авто.")
@@ -91,7 +90,7 @@ async def send_recommendation_to_all(call: types.CallbackQuery):
 
 async def main():
     scheduler.add_job(send_reminders, "interval", weeks=4)
-    scheduler.start()  # Перенесли запуск сюди
+    scheduler.start()
     await dp.start_polling(bot)
 
 if __name__ == '__main__':
