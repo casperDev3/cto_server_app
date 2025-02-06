@@ -4,7 +4,6 @@ from flask_cors import CORS
 import requests
 from dotenv import load_dotenv
 
-# Завантажуємо змінні середовища
 load_dotenv()
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 ADMIN_CHAT_ID = os.getenv("ADMIN_CHAT_ID")
