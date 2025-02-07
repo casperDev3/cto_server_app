@@ -1,4 +1,3 @@
-
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -24,3 +23,24 @@ def create_user_request(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     except Exception as e:
         return Response({"detail": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['PUT'])
+def update_user_request(request, pk):
+    try:
+        user_request = UserRequest.objects.get(pk=pk)
+        serializer = UserRequestSerializer(user_request, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    except UserRequest.DoesNotExist:
+        return Response({"detail": "Request not found."}, status=status.HTTP_404_NOT_FOUND)
+
+@api_view(['DELETE'])
+def delete_user_request(request, pk):
+    try:
+        user_request = UserRequest.objects.get(pk=pk)
+        user_request.delete()
+        return Response({"detail": "Request deleted successfully."}, status=status.HTTP_204_NO_CONTENT)
+    except UserRequest.DoesNotExist:
+        return Response({"detail": "Request not found."}, status=status.HTTP_404_NOT_FOUND)
