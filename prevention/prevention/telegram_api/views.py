@@ -5,7 +5,6 @@ from rest_framework import status
 from .models import UserRequest
 from .serializers import UserRequestSerializer
 
-# Отримання всіх запитів
 @api_view(['GET'])
 def get_user_requests(request):
     try:
@@ -15,7 +14,6 @@ def get_user_requests(request):
     except UserRequest.DoesNotExist:
         return Response({"detail": "No user requests found."}, status=status.HTTP_404_NOT_FOUND)
 
-# Створення нового запиту
 @api_view(['POST'])
 def create_user_request(request):
     try:
