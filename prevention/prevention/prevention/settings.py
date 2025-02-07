@@ -1,10 +1,8 @@
 INSTALLED_APPS = [
-    # Інші додатки
     'rest_framework',
-    'services',  # Ваш додаток
+    'services',
 ]
 
-# Налаштування для DRF
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
