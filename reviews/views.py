@@ -8,7 +8,7 @@ from .utils.helpers import Helpers
 from .models import Review
 from .utils.sorting import Sorting
 from .utils.processing import Processing
-
+# 2
 
 @require_http_methods(["GET", "POST"])
 def all_reviews(request):
