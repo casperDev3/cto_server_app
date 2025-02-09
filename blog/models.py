@@ -26,3 +26,4 @@ class Post(models.Model):
             "comments_list": self.comments_list,
             "tags": self.tags
         }
+# огшргшкршр
