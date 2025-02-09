@@ -36,21 +36,26 @@ def all_reviews(request):
                 data["rating"] = 5
             elif data["rating"] < 0:
                 data["rating"] = 1
-            # return Helpers.success_created(reviews.__str__())
+
             return Helpers.success_created(reviews)  # Передаём объект, но обрабатываем его в хелпере
     except KeyError as e:
         return Helpers.internal_server_error(f"This field does not exist in the Rating table: {str(e)}",
                                              status=400)
     except Exception as e:
         return Helpers.internal_server_error(str(e))
-    # 0602
 
 
-@require_http_methods(["PUT", "DELETE"])
+
+@require_http_methods(["GET","PUT", "DELETE"])
 def reviews_detail(request, pk):
     reviews = get_object_or_404(Review, pk=pk)
     try:
-        if request.method == "PUT":
+        if request.method == "GET":
+            serializer = ReviewSerializer(reviews)
+
+            return Helpers.success_response(serializer.data,status=200,warnings=[])
+
+        elif request.method == "PUT":
 
             try:
                 data = json.loads(request.body)  # Для raw JSON
@@ -69,4 +74,6 @@ def reviews_detail(request, pk):
             reviews.delete()
             return Helpers.success_deleted(reviews)
     except Exception as e:
-        return JsonResponse({"data": None, "meta": {}}, status=500)
+        print("error",e)
+        return Helpers.internal_server_error(str(e))
+
