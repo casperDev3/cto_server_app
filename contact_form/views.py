@@ -1,6 +1,4 @@
 import json
-import os
-from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 from utils.telegram import send_message_async
 from utils.helpers import response_helper, telegram_contact_form_message_helper
