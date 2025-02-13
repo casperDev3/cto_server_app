@@ -1,7 +1,7 @@
 import json
 from django.views.decorators.http import require_http_methods
-from utils.telegram import send_message_async
-from utils.helpers import response_helper, telegram_contact_form_message_helper
+from contact_form.utils.telegram import send_message_async
+from contact_form.utils.helpers import response_helper, telegram_contact_form_message_helper
 
 @require_http_methods(["POST"])
 def contact_us(request):
