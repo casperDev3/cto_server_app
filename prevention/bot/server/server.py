@@ -4,16 +4,12 @@ from flask_cors import CORS
 import requests
 from dotenv import load_dotenv
 
-# Завантажуємо змінні середовища
 load_dotenv()
 
-# Ініціалізація Flask додатка
 app = Flask(__name__)
 
-# Додаємо CORS для дозволу запитів з конкретних доменів
 CORS(app, origins=["http://localhost:3000", "http://127.0.0.1:3000", "http://localhost:63342"])
 
-# Отримуємо змінні середовища
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 ADMIN_CHAT_ID = os.getenv("ADMIN_CHAT_ID")
 TELEGRAM_API_URL = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
@@ -21,7 +17,7 @@ TELEGRAM_API_URL = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
 @app.route('/submit_form', methods=['POST'])
 def submit_form():
     data = request.get_json()
-    print(data)  # Перевірка отриманих даних
+    print(data)
 
     full_name = data.get("fullName")
     phone_number = data.get("phoneNumber")
