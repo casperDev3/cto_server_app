@@ -4,7 +4,7 @@ class Helpers:
     @staticmethod
     def success_response(data,status=200, warnings=None):
         return JsonResponse({
-            "id": data.get("id",None),
+
             "data": data,
             "meta": {},
             "success": True,
