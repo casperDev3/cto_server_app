@@ -3,6 +3,16 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import UserRequest
 from .serializers import UserRequestSerializer
+from .serializers import PreventionSerializer
+
+class PreventionView(APIView):
+    def post(self, request):
+        serializer = PreventionSerializer(data=request.data)
+        if serializer.is_valid():
+            # Тут можна зберегти дані або відправити їх адміністратору
+            print(serializer.validated_data)  # Наприклад, вивести дані в консоль
+            return Response(serializer.validated_data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
 def get_user_requests(request):

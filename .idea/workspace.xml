@@ -1,30 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdd6915a-10fb-4a42-b7c8-acb7cc222caa" name="Changes" comment="" />
+    <list default="true" id="cdd6915a-10fb-4a42-b7c8-acb7cc222caa" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cto_server_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/cto_server_app/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prevention/prevention/telegram_api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/prevention/prevention/telegram_api/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prevention/prevention/telegram_api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/prevention/prevention/telegram_api/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prevention/prevention/telegram_api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/prevention/prevention/telegram_api/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "casperDev3"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;casperDev3&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/casperDev3/cto_server_app.git",
-    "accountId": "94add684-981c-49de-9b2d-5512890642fe"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/casperDev3/cto_server_app.git&quot;,
+    &quot;accountId&quot;: &quot;94add684-981c-49de-9b2d-5512890642fe&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2sXTJZiCONLEPZYjtgYNKhMHLCG" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -33,7 +44,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "a1d-blog-3101",
+    "git-widget-placeholder": "pavlikha-prevention-0402",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }

@@ -6,4 +6,5 @@ urlpatterns = [
     path('user_requests/create/', create_user_request, name='create_user_request'),
     path('requests/<int:pk>/update/', update_user_request, name='update_user_request'),
     path('requests/<int:pk>/delete/', delete_user_request, name='delete_user_request'),
+    path('submit/', PreventionView.as_view(), name='prevention-submit'),
 ]
