@@ -59,6 +59,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3001"
 ]
 
+
 ROOT_URLCONF = 'cto_server_app.urls'
 
 
