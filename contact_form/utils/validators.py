@@ -1,5 +1,5 @@
 def form_validator(data):
-    required_fields = ['name', 'email', 'phone', 'message']
+    required_fields = ['name', 'email', 'message']
 
     for field in required_fields:
         if not data.get(field):
