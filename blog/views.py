@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from .models import Post
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
@@ -21,7 +20,7 @@ def post_detail(request, pk):
         return JsonResponse({"data": post.__str__()})
     elif request.method == "DELETE":
         post.delete()
-        return JsonResponse({"data": "Post deleted"})
+        return JsonResponse({"data": True})
     elif request.method == "PUT":
         data = json.loads(request.body)['data']
         post.title = data['title']
